@@ -47,7 +47,7 @@ allowing the Kernel to allocate more CPU time to processes with lower nice value
 time to processes with higher nice values. We were entrusted with implementing a chance-based 
 scheduling system. The "Fair-Share Scheduler" algorithm.
 
-#2.2. IMPLEMENTATION
+# 2.2. IMPLEMENTATION
 
 ![Ekran görüntüsü 2023-06-16 195730](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/ae7048fd-8e2f-4d3e-99d8-69829d0070c9)
 

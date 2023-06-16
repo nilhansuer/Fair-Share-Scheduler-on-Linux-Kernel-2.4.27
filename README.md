@@ -48,3 +48,34 @@ time to processes with higher nice values. We were entrusted with implementing a
 scheduling system. The "Fair-Share Scheduler" algorithm.
 
 #2.2. IMPLEMENTATION
+
+![Ekran görüntüsü 2023-06-16 195730](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/ae7048fd-8e2f-4d3e-99d8-69829d0070c9)
+
+Figure 1 shows how we introduced a straightforward system call to the kernel that modifies the value of the "phase2switchflag" int variable, which we specified above. We may divide the functionality of the default scheduler using if else statements and switch  between the default scheduler and our scheduler whenever we want by using the  "phase2switchflag" flag in the "sched.c" file.
+
+![Ekran görüntüsü 2023-06-16 200030](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/3394fc65-1963-4099-b3de-9be9a912147d)
+
+
+In Figure 2 are the three functions we’ve implemented in “sched.c”. The functions timer_bh, tqueue_bh, and immediate_bh are declared with extern keyword, indicating that they are defined elsewhere and their definitions can be found in another file or module. timer_bh(void): This function is likely related to handling timer events or tasks. It  might be responsible for processing or managing timers in the system. tqueue_bh(void): This function might be associated with a task queue. It could be  responsible for processing tasks or events from a queue. immediate_bh(void): The name suggests that this function is associated with 
+ immediate or urgent processing. It may handle time-sensitive or high-priority tasks. It's important to note that the actual functionality and purpose of these functions can only be  determined by examining the implementation or the codebase where they are defined.
+
+
+ ![image](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/6cd74c0d-40d1-4ea0-a69e-12e01db0be4b)
+
+ When phase2switchflag is true and c is zero, the activities in this code fragment are carried out. After releasing the run queue lock and updating all task counts according to their "nice" values, it reacquires the run queue lock and jumps to a label to resume scheduling. The overall context  of the code and the scheduling method being used determine the precise function and setting of these operations.
+
+
+ ![image](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/0817adad-cd37-446e-b3ac-ccd2ab17c1c6)
+
+ We initialized an array called “user_process_count” out of the “schedule” function which has 10 elements and keep the number of processes of users.
+
+![image](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/ff21b678-783e-42bc-98c6-6691ea3ff583)
+
+In Figure 6, the else part is active when the scheduler is switched to the fair-share scheduler. In the first “for_each_task” block, number of processes of the users is initialized to the “user_process_count” array. We created the indexes of the array by taking the mode of the userIDs. Then in the second “for_each_task” block, we checked if the related indexes of the  array is equal to 0. If it is not, then number of processes is mutliplied and initialized to a  variable called “process_multiplication”. Then we multiplied it by 6 to make the values bigger without altering the results. At the end, we distributed the “p->counter” values by dividing “process_multiplication” by the number of processes of the related user to make the distribution fair. 
+
+![image](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/2d7f6ddd-81a9-4846-b6c6-c65bb32ee85f)
+
+The program switches between default and fair-share scheduler with respect to the input values. It switches to the fair-share scheduler if the user types "2" and it switches to the default schedular if the user types "1".
+
+
+

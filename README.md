@@ -1,4 +1,6 @@
 # Fair-Share-Scheduler-on-Linux-Kernel-2.4.27
+# ABSTRACT
+ Abstract In this project, we develop a new fair-share scheduling algorithm for the Linux kernel 2.4.27 and evaluate its fairness performance in comparison tonthe standard Linux scheduler. In a VirtualBox VM, all coding and testing are carried out. operating a 2.4.27 kernel.
 
 # 1. INTRODUCTION 
 In operating systems, a scheduler is a vital component that oversees the execution of processes or threads on a computer system's CPU (Central Processing Unit). Its main objective is to distribute the CPU's time among various processes or threads, aiming for efficient and equitable utilization of system resources.

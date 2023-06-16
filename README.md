@@ -55,7 +55,7 @@ The program switches between default and fair-share scheduler with respect to th
 # 3.1 TESTS
 In the testing part, we collected CPU Utilizition values for the processes in each case. There were 5 tests that consist of different number of users and processes. With the use of “ top –n 100 –d 1 –b > d1t1.txt” command, we received data. Each “top” command took 1 second to collect the data. We have totally 5000 samples. There were 5 testcases and each of them had 10 tests. All the tests were repeated for both the default and our Fair-Share scheduler. After all our data had been collected, we calculated the Average CPU Utilization and Mean Square Error (MSE) for each process of each test.
 
-EXAMPLE "TOP" COMMAND OUTPUT FOR THE 2 USERS WITH 3 PROCESSES FOR USER1 AND 1 PROCESS FOR USER2:
+FAIR-SHARE SCHEDULER ALGORITHM EXAMPLE "TOP" COMMAND OUTPUT FOR THE 2 USERS WITH 3 PROCESSES FOR USER1 AND 1 PROCESS FOR USER2:
 ![Ekran görüntüsü 2023-06-16 190918](https://github.com/nilhansuer/Fair-Share-Scheduler-on-Linux-Kernel-2.4.27/assets/78359573/23734ec5-e7a0-4138-bd2d-0b6fd02666d3)
 
 
